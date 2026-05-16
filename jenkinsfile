@@ -2,13 +2,6 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Clone') {
-            steps {
-                git 'https://github.com/Osama8558/devops-auto-app.git'
-            }
-        }
-
         stage('Build Image') {
             steps {
                 sh 'docker build -t osama8558/devops-auto-app:v1 .'
