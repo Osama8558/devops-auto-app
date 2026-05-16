@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone') {
+            steps {
+                git 'https://github.com/Osama8558/devops-auto-app.git'
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t osama8558/devops-auto-app:v1 .'
+            }
+        }
+
+        stage('Push To Docker Hub') {
+            steps {
+                sh 'docker push osama8558/devops-auto-app:v1'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh 'docker rm -f osama-auto-container || true'
+                sh 'docker run -d -p 9091:80 --name osama-auto-container osama8558/devops-auto-app:v1'
+            }
+        }
+    }
+}
