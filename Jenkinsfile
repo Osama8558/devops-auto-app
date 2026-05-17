@@ -1,8 +1,8 @@
-cat > Jenkinsfile <<'EOF'
 pipeline {
     agent any
 
     stages {
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t osama-auto-app .'
@@ -15,6 +15,6 @@ pipeline {
                 sh 'docker run -d --name osama-auto-container -p 9090:80 osama-auto-app'
             }
         }
+
     }
 }
-EOF
