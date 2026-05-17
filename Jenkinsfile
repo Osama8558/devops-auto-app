@@ -12,7 +12,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 sh 'docker rm -f osama-auto-container || true'
-                sh 'docker run -d --name osama-auto-container -p 9090:80 osama-auto-app'
+                sh 'docker run -d --name osama-auto-container -p 9092:80 osama-auto-app'
             }
         }
 
