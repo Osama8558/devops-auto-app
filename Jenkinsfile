@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Docker Login') {
+            steps {
+                sh 'echo Oo009900oO | docker login -u osama8558 --password-stdin'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t osama8558/osama-auto-app .'
