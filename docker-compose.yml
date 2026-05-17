@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  web:
+    build: .
+    container_name: osama-auto-container
+    ports:
+      - "9090:80"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "81:80"
